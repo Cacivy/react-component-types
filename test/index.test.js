@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const parse = require('../src/parse')
+const parse = require('../parse')
 
 describe('parse a component file', () => {
   const buttonDir = path.resolve(__dirname, './button.js')

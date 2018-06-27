@@ -2,8 +2,25 @@
 
 用于为react组件生成typescript声明文件
 
+### CLI
+
+```
+  Usage: rct [options] [command]
+
+  Options:
+
+    -o, --output     output path
+    -c, --cover      Whether to cover it when it exists
+    -d, --directory  parse child directory
+    -h, --help       output usage information
+
+  Commands:
+
+    parse <dir>      A component or directory
+    help [cmd]       display help for [cmd]
+```
+
 ### TODO
 
-- [ ] 支持根据目录查找生成
-- [ ] 使用Jest测试
-- [ ] 更多选项
+- [x] 支持根据目录查找生成
+- [x] 使用Jest测试

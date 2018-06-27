@@ -3,7 +3,7 @@
 const program = require('commander');
 const fs = require('fs')
 const path = require('path')
-const parse = require('../src/parse')
+const parse = require('../parse')
 
 program
   .command('parse <dir>', 'A component or directory')
