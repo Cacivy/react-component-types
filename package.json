@@ -2,14 +2,20 @@
   "name": "react-component-types",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/parse.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "bin": {
+    "rct": "bin/react-component-type.js"
+  },
+  "keywords": ["react", "typescript"],
+  "author": "Cacivy",
   "license": "ISC",
   "devDependencies": {
+  },
+  "dependencies": {
+    "commander": "^2.15.1",
     "react-docgen": "^2.21.0",
     "readline-sync": "^1.4.9"
   }
