@@ -2,7 +2,7 @@ const fs = require('fs')
 const readlineSync = require('readline-sync');
 const reactDocs = require('react-docgen');
 
-module.exports = (config, dir) => {
+module.exports = (config={}, dir) => {
   const buffer = fs.readFileSync(dir)
   const fileName = dir.substring(0, dir.lastIndexOf('.'))
   const text = buffer.toString('utf-8')
