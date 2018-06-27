@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "commander": "^2.15.1",
-    "react-docgen": "^2.21.0",
+    "react-docgen": "^3.0.0-beta12",
     "readline-sync": "^1.4.9"
   }
 }

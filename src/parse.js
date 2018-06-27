@@ -26,7 +26,9 @@ module.exports = (dir) => {
   const transformObj = {
     bool: 'boolean',
     func: 'Function',
-    array: 'Array<any>'
+    array: 'Array<any>',
+    node: 'Node',
+    custom: 'any'
   }
 
   const transform = (typeName, value) => {
@@ -38,6 +40,10 @@ module.exports = (dir) => {
       propType = value.map(({
         name
       }) => transform(name)).join(' | ')
+    } else if (typeName === 'enum') {
+      propType = value.map(({
+        value
+      }) => value).join(' | ')
     } else {
       propType = typeName
     }

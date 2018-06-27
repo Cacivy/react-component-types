@@ -1,5 +1,5 @@
 import React from "react";
-import { string, bool, func } from 'prop-types'
+import { string, bool, func, oneOf } from 'prop-types'
 
 const Button = ({ disabled, className, onClick, text }) => (
   <div disabled={disabled} className={className} onClick={onClick}>
@@ -11,11 +11,13 @@ Button.propTypes = {
   text: string.isRequired,
   disabled: bool,
   className: string,
+  type: oneOf(['primary', 'default', 'danger']),
   onClick: func,
 }
 
 Button.defaultProps = {
   disabled: false,
+  type: 'default',
   onClick: () => {},
 }
 
