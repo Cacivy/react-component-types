@@ -2,7 +2,7 @@ const fs = require('fs')
 const readlineSync = require('readline-sync');
 const reactDocs = require('react-docgen');
 
-export default parse = (path) => {
+module.exports = (path) => {
   const buffer = fs.readFileSync(path)
   const fileName = path.substring(0, path.lastIndexOf('.'))
   const text = buffer.toString('utf-8')
@@ -20,7 +20,7 @@ export default parse = (path) => {
 
   const dTS = []
 
-  dTS.push(DEFAULT.IMPORT, LINE)
+  dTS.push(DEFAULT.IMPORT)
   dTS.push(`interface ${displayName}Props {`)
 
   const transformObj = {
@@ -53,7 +53,7 @@ export default parse = (path) => {
   })
 
   dTS.push(`}`)
-  dTS.push(LINE, `export class ${displayName} extends React.Component<${displayName}Props> {}`)
+  dTS.push(`export class ${displayName} extends React.Component<${displayName}Props> {}`)
 
   const outPath = `${fileName}.d.ts`
 
