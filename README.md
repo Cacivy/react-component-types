@@ -5,6 +5,8 @@
 ### CLI
 
 ```
+  npm i -g react-component-types
+
   Usage: rct [options] [command]
 
   Options:
@@ -24,3 +26,5 @@
 
 - [x] 支持根据目录查找生成
 - [x] 使用Jest测试
+- [ ] 文件打包
+- [ ] 完善测试
