@@ -2,11 +2,17 @@ const fs = require('fs')
 const readlineSync = require('readline-sync');
 const reactDocs = require('react-docgen');
 
-module.exports = (dir) => {
+module.exports = (config, dir) => {
   const buffer = fs.readFileSync(dir)
   const fileName = dir.substring(0, dir.lastIndexOf('.'))
   const text = buffer.toString('utf-8')
-  const componentInfo = reactDocs.parse(text);
+  let componentInfo = {}
+  try {
+    componentInfo = reactDocs.parse(text);
+  } catch (error) {
+    console.error(`path: ${dir}; err: ${error}`)
+    return
+  }
   const {
     displayName,
     props
@@ -44,6 +50,8 @@ module.exports = (dir) => {
       propType = value.map(({
         value
       }) => value).join(' | ')
+    } else if (typeName === 'arrayOf') {
+      propType = `${value.name}[]`
     } else {
       propType = typeName
     }
@@ -65,14 +73,11 @@ module.exports = (dir) => {
 
   const exists = fs.existsSync(outPath)
 
-  if (exists) {
-
-
-    if (!readlineSync.keyInYN(`${outPath}已存在? 是否覆盖`)) {
-      return
-    }
+  if (!config.cover && exists && !readlineSync.keyInYN(`${outPath}已存在? 是否覆盖`)) {
+    return
   }
+
   const result = dTS.join(LINE)
-  fs.writeFile(outPath, result)
+  fs.writeFileSync(outPath, result)
   return result
 }
