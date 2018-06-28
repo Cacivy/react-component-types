@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const readlineSync = require('readline-sync');
 const reactDocs = require('react-docgen');
 
@@ -69,7 +70,17 @@ module.exports = (config={}, dir) => {
   dTS.push(`}`)
   dTS.push(`export class ${displayName} extends React.Component<${displayName}Props> {}`)
 
+
   const outPath = `${fileName}.d.ts`
+  if (cmd.output) {
+    const stat = fs.statSync(cmd.output)
+    if (stat.isFile()) {
+      outPath = cmd.output
+    } else if (stat.isDirectory()) {
+      outPath = path.resolve(cmd.output, outPath)
+    }
+  }
+
 
   const exists = fs.existsSync(outPath)
 
