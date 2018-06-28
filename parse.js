@@ -4,6 +4,7 @@ const readlineSync = require('readline-sync');
 const reactDocs = require('react-docgen');
 
 module.exports = (config={}, dir) => {
+  const { output, cover } = config
   const buffer = fs.readFileSync(dir)
   const fileName = dir.substring(0, dir.lastIndexOf('.'))
   const text = buffer.toString('utf-8')
@@ -70,21 +71,20 @@ module.exports = (config={}, dir) => {
   dTS.push(`}`)
   dTS.push(`export class ${displayName} extends React.Component<${displayName}Props> {}`)
 
-
-  const outPath = `${fileName}.d.ts`
-  if (cmd.output) {
-    const stat = fs.statSync(cmd.output)
-    if (stat.isFile()) {
-      outPath = cmd.output
-    } else if (stat.isDirectory()) {
-      outPath = path.resolve(cmd.output, outPath)
+  let outPath = `${fileName}.d.ts`
+  if (output) {
+    console.log('dirname', __dirname);
+    if (output.lastIndexOf('.d.ts') === (output.length - 5)) {
+      outPath = output
+    } else {
+      outPath = path.resolve(output, outPath.substring(outPath.lastIndexOf('/') + 1))
     }
   }
 
 
   const exists = fs.existsSync(outPath)
 
-  if (!config.cover && exists && !readlineSync.keyInYN(`${outPath}已存在? 是否覆盖`)) {
+  if (!cover && exists && !readlineSync.keyInYN(`${outPath}已存在? 是否覆盖`)) {
     return
   }
 
