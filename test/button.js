@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { string, bool, func, oneOf } from 'prop-types'
+import { string, bool, func, oneOf, node } from 'prop-types'
 
 class Button extends Component {
 
@@ -7,6 +7,7 @@ class Button extends Component {
     text: string.isRequired,
     disabled: bool,
     className: string,
+    child: node,
     type: oneOf(['primary', 'default', 'danger']),
     onClick: func,
   }

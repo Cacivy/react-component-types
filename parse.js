@@ -20,11 +20,11 @@ module.exports = (config={}, dir) => {
     props
   } = componentInfo
 
-  const DEFAULT = {
-    IMPORT: 'import React from \'react\'',
-  }
+  const LINE = '\r\n'
 
-  const LINE = '\r'
+  const DEFAULT = {
+    IMPORT: 'import React from \'react\'' + LINE,
+  }
 
   const dTS = []
 
@@ -35,7 +35,8 @@ module.exports = (config={}, dir) => {
     bool: 'boolean',
     func: 'Function',
     array: 'Array<any>',
-    node: 'Node',
+    node: 'string | number | Array<any> | Element',
+    element: 'Element',
     custom: 'any'
   }
 
@@ -69,7 +70,7 @@ module.exports = (config={}, dir) => {
   })
 
   dTS.push(`}`)
-  dTS.push(`export class ${displayName} extends React.Component<${displayName}Props> {}`)
+  dTS.push(LINE + `export class ${displayName} extends React.Component<${displayName}Props> {}`)
 
   let outPath = `${fileName}.d.ts`
   if (output) {
