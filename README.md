@@ -2,6 +2,12 @@
 
 用于为react组件生成typescript声明文件
 
+### Usage
+
+```
+rct -d ./src
+```
+
 ### CLI
 
 ```
