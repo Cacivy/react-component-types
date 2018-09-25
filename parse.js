@@ -61,6 +61,10 @@ module.exports = (config={}, dir) => {
     return propType
   }
 
+  if (!props) {
+    return
+  }
+
   Object.keys(props).forEach(key => {
     const obj = props[key]
     const propName = key
