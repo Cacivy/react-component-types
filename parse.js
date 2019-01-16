@@ -74,7 +74,7 @@ module.exports = (config={}, dir) => {
   })
 
   dTS.push(`}`)
-  dTS.push(LINE + `export class ${displayName} extends React.Component<${displayName}Props> {}`)
+  dTS.push(LINE + `export default class ${displayName} extends React.Component<${displayName}Props> {}`)
 
   let outPath = `${fileName}.d.ts`
   if (output) {
