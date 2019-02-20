@@ -7,6 +7,7 @@
 ```
 // single
 rct ./src/header/index.js
+
 // many folder
 rct -d ./src
 ```
