@@ -4,7 +4,8 @@
   "description": "",
   "main": "parse.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "cov": "jest --coverage"
   },
   "bin": {
     "rct": "bin/react-component-type.js"
