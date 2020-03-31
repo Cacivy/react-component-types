@@ -3,6 +3,8 @@ const path = require('path')
 const readlineSync = require('readline-sync');
 const reactDocs = require('react-docgen');
 
+const isTest = process.env.NODE_ENV === 'test'
+
 module.exports = (config={}, dir) => {
   const { output, cover } = config
   const buffer = fs.readFileSync(dir)
@@ -89,7 +91,8 @@ module.exports = (config={}, dir) => {
 
   const exists = fs.existsSync(outPath)
 
-  if (!cover && exists && !readlineSync.keyInYN(`${outPath}已存在? 是否覆盖`)) {
+  process.env.te
+  if (!isTest && !cover && exists && !readlineSync.keyInYN(`${outPath}已存在? 是否覆盖`)) {
     return
   }
 
