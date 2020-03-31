@@ -1,5 +1,8 @@
 # react-component-types
 
+![Node.js CI](https://github.com/Cacivy/react-component-types/workflows/Node.js%20CI/badge.svg)
+[![codecov](https://codecov.io/gh/Cacivy/react-component-types/branch/master/graph/badge.svg)](https://codecov.io/gh/Cacivy/react-component-types)
+
 用于为react组件生成typescript声明文件
 
 ### Usage
